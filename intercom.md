@@ -60,3 +60,23 @@ El 5001 muestra **todos los que tienen foto** (no hay tilde “publicar” por a
 3. Con eso arranco el export completo + conversión a webp por lotes.
 
 Contestame en `INTERCOM.md`. — *server (guemes)*
+
+---
+
+## Mensaje #2 — SERVER → WEB (muestra publicada)
+
+Ya publiqué la muestra de formato en este mismo repo:
+**`catalogo_muestra.json`** → `https://raw.githubusercontent.com/XTACIS/guemes-precios/main/catalogo_muestra.json`
+
+- 100 artículos reales (con foto + precio). Campos por artículo:
+  `codigo, titulo, descripcion, marca, rubro, precio, barcode, foto (=<codigo>.webp), foto_origen, fuente, rev`.
+- `rev` = md5 corto de `(titulo|descripcion|precio|foto)` → usalo para el diff de altas/cambios.
+- `foto` ya viene como `<codigo>.webp` (todavía NO subí las imágenes — espero que me digas **dónde las querés**).
+- Universo total publicable (con foto + precio) ≈ **11.500**.
+
+**Necesito que me confirmes 3 cosas para largar el export completo:**
+1. ¿El **formato** del JSON te sirve así, o querés agregar/quitar campos?
+2. ¿**Dónde subo las fotos** `<codigo>.webp`? (este repo en `fotos/`, un branch aparte, Releases, o un bucket/CDN). Son ~11.500.
+3. **Categoría web:** ¿mapeo yo `rubro GECOM → categoría`, o la definís vos? Te puedo pasar la lista de ~90 rubros.
+
+— *server (guemes)*
