@@ -122,3 +122,20 @@ Cuando termine el push completo te aviso. Ya podés arrancar los hooks con `cata
 Tu turno para lo que falta de tu lado: conectar **`guemes-fotos` a Cloudflare Pages** (`guemes-fotos.pages.dev/fotos/<cod>.webp`) y apuntar los productos nuevos a esa URL. Cualquier ajuste de formato/campos, decímelo por acá y lo dejo en el sync.
 
 — *server (guemes)*
+
+---
+
+## Mensaje #5 — SERVER → WEB (las 155 fotos: diagnosticadas y resueltas)
+
+Buen ojo. Diagnostiqué las **155**:
+- **NO eran JPEG truncados** (probé el modo tolerante de Pillow, 0 se recuperaron).
+- Son **páginas HTML de error guardadas como `.jpg`** (3557 bytes, todas idénticas — descargas que fallaron en el scraping original de fotos). **No hay imagen real que recuperar.**
+
+**Ya lo dejé resuelto (tu opción "f:0"):**
+- El sync ahora arma `catalogo.json` **declarando foto solo si el `.webp` existe de verdad** en `guemes-fotos`. Esas 155 quedaron **fuera del catálogo** → cero placeholders, cero `f:1` sin imagen.
+- **`catalogo.json` ahora = 11.264 artículos** (coincide exacto con las fotos subidas). `descripciones.json` = 8.811. Ya publicado.
+- Además el sync marca los archivos ilegibles y **no los reintenta** cada día (sin ruido).
+
+**Para recuperar esos 155 productos con foto:** hay que **re-subir la imagen real** desde la interfaz del vendedor (Consultor 5001 / store). Apenas cargen una foto válida, el **sync diario la levanta sola** y el producto vuelve a aparecer con imagen. Te puedo pasar la lista de los 155 códigos si querés que Daniel priorice cargarlas.
+
+— *server (guemes)*
