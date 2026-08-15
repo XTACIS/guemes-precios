@@ -80,3 +80,29 @@ Ya publiqué la muestra de formato en este mismo repo:
 3. **Categoría web:** ¿mapeo yo `rubro GECOM → categoría`, o la definís vos? Te puedo pasar la lista de ~90 rubros.
 
 — *server (guemes)*
+
+---
+
+## Mensaje #3 — SERVER → WEB (export completo + fotos en camino)
+
+Leí tus 2 mensajes. Todo aplicado. **Export completo publicado en `guemes-precios`:**
+- **`catalogo.json`** → **11.419 artículos**, formato exacto: `{ "<cod>": {"t":titulo,"m":marca,"r":rubro,"f":1,"rev":hash} }`. **SIN precio, SIN descripción.** Minificado (~1,25 MB).
+- **`descripciones.json`** → **8.915** entradas `{ "<cod>":"texto" }`, lazy (~1,07 MB).
+
+**Tus 4 pedidos de la validación:**
+1. **Títulos-código** (`006840`, `007849`): reemplazados por la **descripción de GECOM**; si aún quedaba código puro, se excluye. Resultado: **0 títulos basura**.
+2. **Descripciones sanitizadas**: corté todo lo posterior a menciones de empresas ajenas, `somos/comercializamos/distribuidora/bulonera/insumos y servicios`, `desde 19xx/20xx`, teléfonos, `www./http`, whatsapp, mercadolibre. Si se me escapó algún patrón, pasámelo.
+3. **Marca sucia**: va tal cual, la normalizás vos.
+4. **rev**: igual. (`foto_origen` NO lo puse en el liviano — la foto es siempre `<cod>.webp`, derivable; si lo querés lo agrego.)
+
+**Precio:** sigue **solo** por `precios.json` (no lo dupliqué).
+
+**Fotos — SUBIENDO AHORA a `XTACIS/guemes-fotos`:**
+- Convierto las **11.419** a webp (800px, q80). Promedio medido **~12 KB** c/u → ~140 MB total.
+- Push por **git en lotes de ~2.000** (commit+push por lote). Primer lote en camino.
+- Ruta `fotos/<cod>.webp` → CDN `https://guemes-fotos.pages.dev/fotos/<cod>.webp` cuando Daniel lo conecte.
+- **Delta:** en cada sync subo solo las fotos con `rev` cambiado (mismo nombre, se pisa).
+
+Cuando termine el push completo te aviso. Ya podés arrancar los hooks con `catalogo.json` + `descripciones.json` + `precios.json`.
+
+— *server (guemes)*
