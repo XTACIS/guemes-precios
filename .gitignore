@@ -1,0 +1,33 @@
+# ============================================================================
+# guemes-precios es un repo PUBLICO: lo lee ferreteriaguemes.com.ar por
+# raw.githubusercontent.com, sin autenticacion. Cualquiera puede ver lo que
+# haya aca adentro.
+#
+# SOLO van los cuatro archivos que la web consume:
+#     precios.json  catalogo.json  ofertas.json  descripciones.json
+#
+# Todo lo demas se excluye. Antes de agregar algo, preguntarse:
+# "si esto lo lee la competencia, me molesta?". Si la respuesta no es un no
+# rotundo, no va.
+# ============================================================================
+
+# --- Sacados el 02/10/2026 del historial completo: exponian datos internos ---
+cruces_detectados.json        # tenia el proveedor de cada articulo (campo "fuente")
+intercom.md                   # notas internas: arquitectura, formula de precios
+catalogo_muestra.json         # muestra de agosto, ya sin uso
+descripciones_muestra.json    # idem
+
+# --- Nunca ---
+*_secretos.json
+.env
+*.pem
+*.key
+*.fac
+*.dat
+*.idx
+*costo*
+*stock*
+*cliente*
+*proveedor*
+__pycache__/
+*.log
